@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cafe Map</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 2rem;
+        }
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border: 1px solid #ccc;
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Riyadh Cafes</h1>
+
+<p>
+    Each cafe on the map is assigned a <strong>score (out of 5)</strong> that reflects both its average user rating and its popularity. Here's how the score is calculated:
+</p>
+
+<ol>
+    <li><strong>Normalize</strong> both rating and rating_count to a 0-1 range:</li>
+    <pre><code>rating_norm = (rating - min) / (max - min)
+popularity_norm = (rating_count - min) / (max - min)</code></pre>
+
+    <li><strong>Combine</strong> the normalized values using a weighted average:</li>
+    <pre><code>score = 5 x (0.9 x rating_norm + 0.1 x popularity_norm)</code></pre>
+
+    <li>
+        This gives more importance to the average rating (90%) while still accounting for how many users rated the cafe (10%).
+    </li>
+</ol>
+
+<p>
+    The final result is a score between 0 and 5. Hover over each point on the map to see its name, original rating, number of ratings, and computed score.
+</p>
+    <iframe src="cafes_map.html"></iframe>
+
+</body>
+</html>
